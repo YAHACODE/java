@@ -3,80 +3,88 @@
  *
  *
  * @author 
- * @version 1.00 2014/3/17
+ * @version 1.00 2014/3/14
  */
 
-import java.io.*;
-public class tableau {
-int n;
-String tab[];
 
-public  tableau()
-{
-}
+public class tableau 
 
-void  Saisir ()
 {
-	String t ;
-	try{
-		System.out.print("donner taille tableau");
-		BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-		
-		t = bf.readLine();
-		
-		n=Integer.parseInt(t) ;
+
+	int tab[]=new int[6] ;
+		public  tableau () 
+			
+		{ tab[0]=3 ;
+			tab[1]=5;
+				tab[2]=6;
+					tab[3]=98;
+						tab[4]=9;
+							tab[5]=100;
+							
 			
 			
-			//System.out.print(tab.length);
-	}
-	catch(Exception e) {}
-	tab=new String[n];
-}
-
-
-
-void saisirTableau()
-{
-	
-	
-	
-	String nom="";
-	try
+		}			
+			
+			void recherche()
+				
+			{
+				boolean  test=false;
+				int pos=0;
+				int x=9;
+				
+				for(int i=0 ; i <tab.length;i++)
+					
+				{
+					
+					if(x==tab[i])
+					{
+						test=true;
+						pos=i;
+				
+					}
+				}
+				
+				if(test==true)
+					System.out.println("valeur existe dans la postion "+ pos );
+						else
+									System.out.println("valeur n'existe pas ");
+			}
+	void  affiche()
 	{
 		for(int i=0;i<tab.length;i++)
+			System.out.print("["+ tab[i]+"]" );		
+				
+	}
+	
+	void trier()
+	{int aux;
+		
+		for (int i=0;i<tab.length-1 ;i++)
+			
 		{
-			System.out.println("Donner le nom num: "+i);
-			BufferedReader bf=new BufferedReader(new InputStreamReader(System.in));
-			nom=bf.readLine();
-			tab[i]=nom;
+			
+		for (int j=i;j<tab.length;j++)
+			
+			
+		{
+			if(tab[i]<tab[j])
+			{
+				aux=tab[i];
+				tab[i]=tab[j];
+				tab[j]=aux;
+			}
 		}
-		
-		
 	}
-	catch(Exception e){
 	}
-}
-
-
-
-
-void affichage()
-{
-	for(int i=0;i<tab.length;i++)
+	
+	public static  void main(String args[])
 	{
-		System.out.print("|"+tab[i]+"|");
-	}
+		tableau t1= new tableau ();
+		t1.affiche();
+		t1.recherche();
+		t1.trier() ;
+		t1.affiche();
+	}		
 }
-
-
- public static void main (String[] args) 
- 	{
- 		
- 		tableau t1 = new tableau() ;
- 		
- 		t1.Saisir();
- 		t1.saisirTableau();
- 		t1.affichage();
-}    
     
-}
+    
